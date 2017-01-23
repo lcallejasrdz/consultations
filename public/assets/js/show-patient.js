@@ -1,0 +1,2 @@
+/* Validator */
+$('#rootwizard').bootstrapWizard();
