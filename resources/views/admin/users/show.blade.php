@@ -53,6 +53,14 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    @if($user->id == Auth::user()->id)
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <a href="/admin/user/{{ $user->id }}/edit" class="btn btn-primary"><i class="fa fa-fw fa-pencil-square-o"></i> Editar</a>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
