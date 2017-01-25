@@ -95,18 +95,6 @@ class PatientController extends Controller
         if($request->endocrine_diseases == null){
             $request->endocrine_diseases = 0;
         }
-        if($request->g == null){
-            $request->g = 0;
-        }
-        if($request->p == null){
-            $request->p = 0;
-        }
-        if($request->a == null){
-            $request->a = 0;
-        }
-        if($request->c == null){
-            $request->c = 0;
-        }
 
         Patient::create([
                 'id_doctor' => $request->id_doctor,
@@ -238,7 +226,7 @@ class PatientController extends Controller
         }
 
         if($patient->fum != ''){
-            $patient->fpp = FunctionsModel::fppSemCalc($patient->fum).' semanas';
+            $patient->fpp = FunctionsModel::fppCalc($patient->fum);
         }else{
             $patient->fpp = '';
         }
@@ -252,9 +240,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patient $patient)
     {
-        //
+        return view('admin.patients.edit', compact('patient'));
     }
 
     /**
@@ -264,9 +252,46 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PatientRequest $request, Patient $patient)
     {
-        //
+        if($request->diabetes == null){
+            $request->diabetes = 0;
+        }
+        if($request->arterial_hypertension == null){
+            $request->arterial_hypertension = 0;
+        }
+        if($request->asthma == null){
+            $request->asthma = 0;
+        }
+        if($request->cardiopathy == null){
+            $request->cardiopathy = 0;
+        }
+        if($request->nephropathy == null){
+            $request->nephropathy = 0;
+        }
+        if($request->hepatopathy == null){
+            $request->hepatopathy = 0;
+        }
+        if($request->pneumopathy == null){
+            $request->pneumopathy = 0;
+        }
+        if($request->cancer == null){
+            $request->cancer = 0;
+        }
+        if($request->mental_diseases == null){
+            $request->mental_diseases = 0;
+        }
+        if($request->allergic_diseases == null){
+            $request->allergic_diseases = 0;
+        }
+        if($request->endocrine_diseases == null){
+            $request->endocrine_diseases = 0;
+        }
+
+        $patient->update($request->all());
+
+        Session::flash('message-success','Paciente actualizado correctamente.');
+        return Redirect::to('/admin/patient/'.$patient->id);
     }
 
     /**
@@ -284,5 +309,47 @@ class PatientController extends Controller
         return response()->json([
             "message" => "deleted"
         ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleted()
+    {
+        return view('admin.patients.deleted');
+    }
+
+    public function datatablesdeleted(Request $request)
+    {
+        Carbon::setLocale(config('app.locale'));
+        $patients = Patient::onlyTrashed()->get();
+        return Datatables::of($patients)
+            ->edit_column('created_at','{!! \Carbon\Carbon::parse($created_at)->diffForHumans() !!}')
+            ->edit_column('deleted_at','{!! \Carbon\Carbon::parse($deleted_at)->diffForHumans() !!}')
+            ->add_column('actions',function($patient) {
+                $actions = '<a href="/admin/patient/'. $patient->id .'/restore"><i class="text-warning fa fa-fw fa-user-plus"></i></a>';
+                return $actions;
+            })
+            ->make(true);
+    }
+
+    /**
+     * Restore a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $patient = Patient::withTrashed()
+                ->where('id',$id)
+                ->first();
+
+        $patient->restore();
+
+        Session::flash('message-success','Paciente restaurado correctamente.');
+        return Redirect::to('/admin/patient');
     }
 }

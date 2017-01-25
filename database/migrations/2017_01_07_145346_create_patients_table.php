@@ -59,10 +59,10 @@ class CreatePatientsTable extends Migration
             $table->text('others_personal_history');
             $table->string('menarca');
             $table->string('menstrual_rhythm');
-            $table->integer('g');
-            $table->integer('p');
-            $table->integer('a');
-            $table->integer('c');
+            $table->string('g');
+            $table->string('p');
+            $table->string('a');
+            $table->string('c');
             $table->string('fum');
             $table->string('menopause');
             $table->text('cardiovascular_system');

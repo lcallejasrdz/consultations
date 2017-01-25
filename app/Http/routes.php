@@ -53,6 +53,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 	 */
 		// DataTables Index
 		Route::get('/api/patients','PatientController@datatablesindex');
+		// Deleted
+		Route::get('/patient/deleted','PatientController@deleted');
+		// DataTables Deleted
+		Route::get('/api/patients-deleted','PatientController@datatablesdeleted');
+		// Restore Deleted
+		Route::get('/patient/{id}/restore','PatientController@restore');
 		// Restfull
 		Route::resource('/patient','PatientController');
 });

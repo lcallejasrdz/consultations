@@ -173,6 +173,46 @@ $("#commentForm").formValidation({
                     }
                 }
             }
+        },
+        g: {
+            validators: {
+                integer: {
+                    message: 'El valor no es un entero',
+                    // The default separators
+                    thousandsSeparator: '',
+                    decimalSeparator: '.'
+                }
+            }
+        },
+        p: {
+            validators: {
+                integer: {
+                    message: 'El valor no es un entero',
+                    // The default separators
+                    thousandsSeparator: '',
+                    decimalSeparator: '.'
+                }
+            }
+        },
+        a: {
+            validators: {
+                integer: {
+                    message: 'El valor no es un entero',
+                    // The default separators
+                    thousandsSeparator: '',
+                    decimalSeparator: '.'
+                }
+            }
+        },
+        c: {
+            validators: {
+                integer: {
+                    message: 'El valor no es un entero',
+                    // The default separators
+                    thousandsSeparator: '',
+                    decimalSeparator: '.'
+                }
+            }
         }
     }
 })

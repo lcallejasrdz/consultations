@@ -42,6 +42,10 @@ class PatientRequest extends Request
                     'email' => 'required',
                     'menarca' => 'required_with:menstrual_rhythm',
                     'menstrual_rhythm' => 'required_with:menarca',
+                    'g' => 'integer',
+                    'p' => 'integer',
+                    'a' => 'integer',
+                    'c' => 'integer',
                 ];
             }
             case 'PUT': {
@@ -60,8 +64,12 @@ class PatientRequest extends Request
                     'no_exterior' => 'required',
                     'phone' => 'required',
                     'email' => 'required',
-                    'menarca' => 'required_if:menstrual_rhythm',
-                    'menstrual_rhythm' => 'required_if:menarca',
+                    'menarca' => 'required_with:menstrual_rhythm',
+                    'menstrual_rhythm' => 'required_with:menarca',
+                    'g' => 'integer',
+                    'p' => 'integer',
+                    'a' => 'integer',
+                    'c' => 'integer',
                 ];
             }
             default:

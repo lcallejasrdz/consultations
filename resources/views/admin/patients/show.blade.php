@@ -313,32 +313,32 @@
                                         <tr>
                                             <th>G</th>
                                             <td>
-                                                @if($patient->g == 1)
-                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                @if($patient->g != 0)
+                                                    {{ $patient->g }}
                                                 @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>P</th>
                                             <td>
-                                                @if($patient->p == 1)
-                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                @if($patient->p != 0)
+                                                    {{ $patient->p }}
                                                 @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>A</th>
                                             <td>
-                                                @if($patient->a == 1)
-                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                @if($patient->a != 0)
+                                                    {{ $patient->a }}
                                                 @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>C</th>
                                             <td>
-                                                @if($patient->c == 1)
-                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                @if($patient->c != 0)
+                                                    {{ $patient->c }}
                                                 @endif
                                             </td>
                                         </tr>

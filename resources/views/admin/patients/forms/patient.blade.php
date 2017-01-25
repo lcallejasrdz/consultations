@@ -336,7 +336,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('diabetes', 1, old('diabetes', 0)) !!}
+                            {!! Form::checkbox('diabetes', 1, old('diabetes')) !!}
                         </label>
                     </div>
 
@@ -354,7 +354,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('arterial_hypertension', 1) !!}
+                            {!! Form::checkbox('arterial_hypertension', 1, old('arterial_hypertension')) !!}
                         </label>
                     </div>
 
@@ -372,7 +372,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('asthma', 1) !!}
+                            {!! Form::checkbox('asthma', 1, old('asthma')) !!}
                         </label>
                     </div>
 
@@ -390,7 +390,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('cardiopathy', 1) !!}
+                            {!! Form::checkbox('cardiopathy', 1, old('cardiopathy')) !!}
                         </label>
                     </div>
 
@@ -408,7 +408,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('nephropathy', 1) !!}
+                            {!! Form::checkbox('nephropathy', 1, old('nephropathy')) !!}
                         </label>
                     </div>
 
@@ -426,7 +426,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('hepatopathy', 1) !!}
+                            {!! Form::checkbox('hepatopathy', 1, old('hepatopathy')) !!}
                         </label>
                     </div>
 
@@ -444,7 +444,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('pneumopathy', 1) !!}
+                            {!! Form::checkbox('pneumopathy', 1, old('pneumopathy')) !!}
                         </label>
                     </div>
 
@@ -462,7 +462,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('cancer', 1) !!}
+                            {!! Form::checkbox('cancer', 1, old('cancer')) !!}
                         </label>
                     </div>
 
@@ -480,7 +480,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('mental_diseases', 1) !!}
+                            {!! Form::checkbox('mental_diseases', 1, old('mental_diseases')) !!}
                         </label>
                     </div>
 
@@ -498,7 +498,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('allergic_diseases', 1) !!}
+                            {!! Form::checkbox('allergic_diseases', 1, old('allergic_diseases')) !!}
                         </label>
                     </div>
 
@@ -516,7 +516,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('endocrine_diseases', 1) !!}
+                            {!! Form::checkbox('endocrine_diseases', 1, old('endocrine_diseases')) !!}
                         </label>
                     </div>
 
@@ -758,11 +758,7 @@
                 {!! Form::label('g', 'G', ['class' => 'col-md-4 control-label']) !!}
 
                 <div class="col-md-6">
-                    <div class="checkbox">
-                        <label>
-                            {!! Form::checkbox('g', 1) !!}
-                        </label>
-                    </div>
+                    {!! Form::text('g',old('g'),['class'=>'form-control','id'=>'g']) !!}
 
                     @if ($errors->has('g'))
                         <span class="help-block">
@@ -776,11 +772,7 @@
                 {!! Form::label('p', 'P', ['class' => 'col-md-4 control-label']) !!}
 
                 <div class="col-md-6">
-                    <div class="checkbox">
-                        <label>
-                            {!! Form::checkbox('p', 1) !!}
-                        </label>
-                    </div>
+                    {!! Form::text('p',old('p'),['class'=>'form-control','id'=>'p']) !!}
 
                     @if ($errors->has('p'))
                         <span class="help-block">
@@ -794,11 +786,7 @@
                 {!! Form::label('a', 'A', ['class' => 'col-md-4 control-label']) !!}
 
                 <div class="col-md-6">
-                    <div class="checkbox">
-                        <label>
-                            {!! Form::checkbox('a', 1) !!}
-                        </label>
-                    </div>
+                    {!! Form::text('a',old('a'),['class'=>'form-control','id'=>'a']) !!}
 
                     @if ($errors->has('a'))
                         <span class="help-block">
@@ -812,11 +800,7 @@
                 {!! Form::label('c', 'C', ['class' => 'col-md-4 control-label']) !!}
 
                 <div class="col-md-6">
-                    <div class="checkbox">
-                        <label>
-                            {!! Form::checkbox('c', 1) !!}
-                        </label>
-                    </div>
+                    {!! Form::text('c',old('c'),['class'=>'form-control','id'=>'c']) !!}
 
                     @if ($errors->has('c'))
                         <span class="help-block">
