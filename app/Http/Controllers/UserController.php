@@ -29,7 +29,8 @@ class UserController extends Controller
     public function datatablesindex(Request $request)
     {
         Carbon::setLocale(config('app.locale'));
-        $users = User::where('id','!=',$request->user()->id)->get();
+        //$users = User::where('id','!=',$request->user()->id)->get();
+        $users = User::get();
         return Datatables::of($users)
             ->edit_column('created_at','{!! \Carbon\Carbon::parse($created_at)->diffForHumans() !!}')
             ->add_column('actions',function($user) {
