@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Laravel</title>
+    <title>Consultas | Administrador</title>
 
     <!-- Bootstrap Core CSS -->
     {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css') !!}
@@ -65,7 +65,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{!! URL::to('/admin') !!}">Laravel</a>
+                <a class="navbar-brand" href="{!! URL::to('/admin') !!}">Consultas</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -159,7 +159,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{!! URL::to('/logout') !!}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="{!! URL::to('/logout') !!}"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                         </li>
                     </ul>
                 </li>

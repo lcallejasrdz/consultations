@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Consultas</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -39,7 +39,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Consultas
                 </a>
             </div>
 
@@ -52,7 +52,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/login') }}"> Iniciar Sesión</a></li>
                         <!--
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         -->
@@ -66,9 +66,9 @@
                                 <li>
                                     <a href="{!! URL::to('/admin/user/'.Auth::user()->id) !!}"><i class="fa fa-fw fa-user"></i> Perfil</a>
                                 </li>
-                                <li><a href="{{ url('/admin') }}"><i class="fa fa-btn fa-heartbeat"></i>Administrador</a></li>
+                                <li><a href="{{ url('/admin') }}"><i class="fa fa-btn fa-heartbeat"></i> Administrador</a></li>
                                 <li class="divider"></li>
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Salir</a></li>
                             </ul>
                         </li>
                     @endif
