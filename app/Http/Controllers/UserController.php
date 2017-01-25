@@ -10,6 +10,7 @@ use Consultations\Http\Requests\UserRequest;
 use Consultations\User;
 use Redirect;
 use Session;
+use Auth;
 use Carbon\Carbon;
 
 use Yajra\Datatables\Facades\Datatables;
@@ -35,8 +36,10 @@ class UserController extends Controller
             ->edit_column('created_at','{!! \Carbon\Carbon::parse($created_at)->diffForHumans() !!}')
             ->add_column('actions',function($user) {
                 $actions = '<a href="/admin/user/'. $user->id .'"><i class="text-success fa fa-fw fa-info-circle"></i></a>
-                            <a href="/admin/user/'. $user->id .'/edit"><i class="text-primary fa fa-fw fa-pencil-square-o"></i></a>
-                            <a href="" OnClick="DeleteShow('.$user->id.', \''.$user->name.'\',\'Usuario\',\'user\');" data-toggle="modal" data-target="#deleteModal"><i class="text-danger fa fa-fw fa-minus-square-o"></i></a>';
+                            <a href="/admin/user/'. $user->id .'/edit"><i class="text-primary fa fa-fw fa-pencil-square-o"></i></a>';
+                if($user->id != Auth::user()->id){
+                    $actions .= '<a href="" OnClick="DeleteShow('.$user->id.', \''.$user->name.'\',\'Usuario\',\'user\');" data-toggle="modal" data-target="#deleteModal"><i class="text-danger fa fa-fw fa-minus-square-o"></i></a>';
+                }
                 return $actions;
             })
             ->make(true);
