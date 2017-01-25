@@ -19,7 +19,7 @@
                     <i class="fa fa-user"></i> <a href="{{ url('/admin/patient') }}">Pacientes</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-user-plus"></i> Editar Paciente
+                    <i class="fa fa-pencil-square"></i> Editar Paciente
                 </li>
             </ol>
         </div>

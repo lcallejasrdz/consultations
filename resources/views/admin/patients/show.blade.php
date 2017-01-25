@@ -15,7 +15,7 @@
                     <i class="fa fa-user"></i> <a href="{{ url('/admin/patient') }}">Pacientes</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-pencil-square"></i> {{ $patient->name }}
+                    <i class="fa fa-info-circle"></i> {{ $patient->name }}
                 </li>
             </ol>
         </div>

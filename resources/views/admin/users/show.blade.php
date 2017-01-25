@@ -15,7 +15,7 @@
                     <i class="fa fa-user"></i> <a href="{{ url('/admin/user') }}">Usuarios</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-pencil-square"></i> {{ $user->name }}
+                    <i class="fa fa-info-circle"></i> {{ $user->name }}
                 </li>
             </ol>
         </div>
