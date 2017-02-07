@@ -171,7 +171,7 @@
                     <li class="active">
                         <a href="{!! URL::to('/admin') !!}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <!-- Users -->
+                    {{-- Users --}}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#usersdropdown"><i class="fa fa-fw fa-user"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usersdropdown" class="collapse">
@@ -186,7 +186,7 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Patients -->
+                    {{-- Patients --}}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#patientsdropdown"><i class="fa fa-fw fa-user"></i> Pacientes <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="patientsdropdown" class="collapse">
@@ -194,10 +194,25 @@
                                 <a href="{!! URL::to('/admin/patient/create') !!}"><i class="fa fa-fw fa-user-plus"></i> Agregar Paciente</a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/patient') }}"><i class="fa fa-fw fa-users"></i> Lista de Paciente</a>
+                                <a href="{{ url('/admin/patient') }}"><i class="fa fa-fw fa-users"></i> Lista de Pacientes</a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/patient/deleted') }}"><i class="fa fa-fw fa-user-times"></i> Paciente Eliminados</a>
+                                <a href="{{ url('/admin/patient/deleted') }}"><i class="fa fa-fw fa-user-times"></i> Pacientes Eliminados</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- Consulting Rooms --}}
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#consultingroomsdropdown"><i class="fa fa-fw fa-map"></i> Consultorios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="consultingroomsdropdown" class="collapse">
+                            <li>
+                                <a href="{!! URL::to('/admin/consulting-room/create') !!}"><i class="fa fa-fw fa-map-marker"></i> Agregar Consultorio</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/consulting-room') }}"><i class="fa fa-fw fa-globe"></i> Lista de Consultorios</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/consulting-room/deleted') }}"><i class="fa fa-fw fa-map-signs"></i> Consultorios Eliminados</a>
                             </li>
                         </ul>
                     </li>

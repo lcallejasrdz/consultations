@@ -61,4 +61,17 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 		Route::get('/patient/{id}/restore','PatientController@restore');
 		// Restfull
 		Route::resource('/patient','PatientController');
+	/*
+	Consulting Rooms
+	 */
+		// DataTables Index
+		Route::get('/api/consulting-rooms','ConsultingRoomController@datatablesindex');
+		// Deleted
+		Route::get('/consulting-room/deleted','ConsultingRoomController@deleted');
+		// DataTables Deleted
+		Route::get('/api/consulting-rooms-deleted','ConsultingRoomController@datatablesdeleted');
+		// Restore Deleted
+		Route::get('/consulting-room/{id}/restore','ConsultingRoomController@restore');
+		// Restfull
+		Route::resource('/consulting-room','ConsultingRoomController');
 });
