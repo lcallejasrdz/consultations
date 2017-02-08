@@ -52,7 +52,7 @@ $app->singleton(
 |
 */
 $app->bind('path.public', function() {
-    return realpath(__DIR__.'/../../public_html');
+    return realpath(__DIR__.env('APP_SERVER'));
 });
 
 return $app;

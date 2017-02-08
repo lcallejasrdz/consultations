@@ -61,8 +61,6 @@ class ConsultingRoomController extends Controller
      */
     public function store(ConsultingRoomRequest $request)
     {
-        return public_path();
-        /*
         if ($file = $request->file('logo')) {
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension() ?: 'png';
@@ -83,7 +81,6 @@ class ConsultingRoomController extends Controller
 
         Session::flash('message-success','Consultorio agregado correctamente.');
         return Redirect::to('/admin/consulting-room');
-        */
     }
 
     /**
