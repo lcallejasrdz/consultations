@@ -61,11 +61,13 @@ class ConsultingRoomController extends Controller
      */
     public function store(ConsultingRoomRequest $request)
     {
+        return public_path();
+        /*
         if ($file = $request->file('logo')) {
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/logos/';
-            $destinationPath = $folderName;
+            $destinationPath = public_path().$folderName;
             $safeName = str_random(10).'.'.$extension;
             $file->move($destinationPath, $safeName);
             $request->logo = $safeName;
@@ -81,6 +83,7 @@ class ConsultingRoomController extends Controller
 
         Session::flash('message-success','Consultorio agregado correctamente.');
         return Redirect::to('/admin/consulting-room');
+        */
     }
 
     /**
@@ -120,12 +123,12 @@ class ConsultingRoomController extends Controller
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/logos/';
-            $destinationPath = $folderName;
+            $destinationPath = public_path().$folderName;
             $safeName = str_random(10).'.'.$extension;
             $file->move($destinationPath, $safeName);
             $request->logo = $safeName;
 
-            File::delete($folderName.$request->old_logo);
+            File::delete(public_path().$folderName.$request->old_logo);
         }else{
             $request->logo = $request->old_logo;
         }
