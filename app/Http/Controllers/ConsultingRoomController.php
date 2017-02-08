@@ -65,7 +65,7 @@ class ConsultingRoomController extends Controller
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/logos/';
-            $destinationPath = public_path().$folderName;
+            $destinationPath = $folderName;
             $safeName = str_random(10).'.'.$extension;
             $file->move($destinationPath, $safeName);
             $request->logo = $safeName;
@@ -120,12 +120,12 @@ class ConsultingRoomController extends Controller
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/logos/';
-            $destinationPath = public_path().$folderName;
+            $destinationPath = $folderName;
             $safeName = str_random(10).'.'.$extension;
             $file->move($destinationPath, $safeName);
             $request->logo = $safeName;
 
-            File::delete(public_path().$folderName.$request->old_logo);
+            File::delete($folderName.$request->old_logo);
         }else{
             $request->logo = $request->old_logo;
         }
