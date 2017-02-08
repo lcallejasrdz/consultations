@@ -61,7 +61,7 @@ class ConsultingRoomController extends Controller
      */
     public function store(ConsultingRoomRequest $request)
     {
-        return base_path();
+        return public_path();
         /*
         if ($file = $request->file('logo')) {
             $fileName = $file->getClientOriginalName();
