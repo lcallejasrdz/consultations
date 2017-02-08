@@ -10,6 +10,7 @@ use Consultations\Http\Requests\PatientRequest;
 use Consultations\Patient;
 use Consultations\User;
 use Consultations\FunctionsModel;
+use Consultations\ConsultingRoom;
 use Redirect;
 use Session;
 use Carbon\Carbon;
@@ -51,7 +52,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('admin.patients.create');
+        $doctors = User::orderby('name')->lists('name','id');
+        $consultingrooms = ConsultingRoom::orderby('title')->lists('title','id');
+        return view('admin.patients.create', compact('doctors','consultingrooms'));
     }
 
     /**
@@ -242,7 +245,9 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        return view('admin.patients.edit', compact('patient'));
+        $doctors = User::orderby('name')->lists('name','id');
+        $consultingrooms = ConsultingRoom::orderby('title')->lists('title','id');
+        return view('admin.patients.edit', compact('patient','doctors','consultingrooms'));
     }
 
     /**

@@ -47,7 +47,6 @@
 @endsection
 
 @section('scripts')
-    {!!Html::script('js/delete-reg.js')!!}
     <script>
         $(document).ready(function(){
             $('#tableusers').DataTable({

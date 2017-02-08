@@ -48,11 +48,19 @@ $("#commentForm").formValidation({
 
 /* GoogleMaps */
 function initAutocomplete() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 19.4336726, lng: -99.1454316},
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+    if($('#lat').val() != '' && $('#lng').val() != ''){
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: parseFloat($('#lat').val()), lng: parseFloat($('#lng').val())},
+            zoom: 18,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    }else{
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 19.4336726, lng: -99.1454316},
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    }
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('searchmap');
@@ -65,6 +73,14 @@ function initAutocomplete() {
     });
 
     var markers = [];
+    
+    if($('#lat').val() != '' && $('#lng').val() != ''){
+        markers.push(new google.maps.Marker({
+                map: map,
+                //draggable: true,
+                position: {lat: parseFloat($('#lat').val()), lng: parseFloat($('#lng').val())}
+            }));
+    }
     // [START region_getplaces]
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.

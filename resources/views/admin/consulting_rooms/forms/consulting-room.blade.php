@@ -68,6 +68,19 @@
                 </div>
             </div>
             
+            @if(isset($consultingroom))
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        {!! Form::label('teaser', 'Teaser', ['class' => 'col-md-4 control-label']) !!}
+
+                        <div class="col-md-8">
+                            <img src="/uploads/logos/{{ $consultingroom->logo }}" class="logo" />
+                            {!! Form::hidden('old_logo',old('old_logo', $consultingroom->logo),['class'=>'form-control','id'=>'old_logo']) !!}
+                        </div>
+                    </div>
+                </div>
+            @endif
+            
             <div class="row">
                 <div class="col-md-12 form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
                     {!! Form::label('logo', 'Logo', ['class' => 'col-md-4 control-label']) !!}

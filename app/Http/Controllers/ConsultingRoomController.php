@@ -8,6 +8,7 @@ use Consultations\Http\Requests;
 use Consultations\Http\Requests\ConsultingRoomRequest;
 
 use Consultations\ConsultingRoom;
+use File;
 use Redirect;
 use Session;
 use Carbon\Carbon;
@@ -79,8 +80,7 @@ class ConsultingRoomController extends Controller
             ]);
 
         Session::flash('message-success','Consultorio agregado correctamente.');
-        //return Redirect::to('/admin/consulting-room');
-        return "Consultorio agregado correctamente";
+        return Redirect::to('/admin/consulting-room');
     }
 
     /**
@@ -103,7 +103,8 @@ class ConsultingRoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        $consultingroom = ConsultingRoom::find($id);
+        return view('admin.consulting_rooms.edit', compact('consultingroom'));
     }
 
     /**
@@ -113,9 +114,34 @@ class ConsultingRoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ConsultingRoomRequest $request, $id)
     {
-        //
+        if ($file = $request->file('logo')) {
+            $fileName = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $folderName = '/uploads/logos/';
+            $destinationPath = public_path().$folderName;
+            $safeName = str_random(10).'.'.$extension;
+            $file->move($destinationPath, $safeName);
+            $request->logo = $safeName;
+
+            File::delete(public_path().$folderName.$request->old_logo);
+        }else{
+            $request->logo = $request->old_logo;
+        }
+
+        $consultingroom = ConsultingRoom::find($id);
+
+        $consultingroom->update([
+                'title' => $request->title,
+                'address' => $request->address,
+                'lat' => $request->lat,
+                'lng' => $request->lng,
+                'logo' => $request->logo
+            ]);
+
+        Session::flash('message-success','Consultorio editado correctamente.');
+        return Redirect::to('/admin/consulting-room');
     }
 
     /**
@@ -126,7 +152,15 @@ class ConsultingRoomController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $consultingroom = ConsultingRoom::find($id);
+
+        $consultingroom->delete();
+
+        Session::flash('message-success','Consultorio eliminado correctamente.');
+
+        return response()->json([
+            "message" => "deleted"
+        ]);
     }
 
     /**
@@ -136,12 +170,21 @@ class ConsultingRoomController extends Controller
      */
     public function deleted()
     {
-        //
+        return view('admin.consulting_rooms.deleted');
     }
 
     public function datatablesdeleted(Request $request)
     {
-        //
+        Carbon::setLocale(config('app.locale'));
+        $consultingrooms = ConsultingRoom::onlyTrashed()->get();
+        return Datatables::of($consultingrooms)
+            ->edit_column('created_at','{!! \Carbon\Carbon::parse($created_at)->diffForHumans() !!}')
+            ->edit_column('deleted_at','{!! \Carbon\Carbon::parse($deleted_at)->diffForHumans() !!}')
+            ->add_column('actions',function($patient) {
+                $actions = '<a href="/admin/consulting-room/'. $patient->id .'/restore"><i class="text-warning fa fa-fw fa-user-plus"></i></a>';
+                return $actions;
+            })
+            ->make(true);
     }
 
     /**
@@ -152,6 +195,13 @@ class ConsultingRoomController extends Controller
      */
     public function restore($id)
     {
-        //
+        $consultingroom = ConsultingRoom::withTrashed()
+                ->where('id',$id)
+                ->first();
+
+        $consultingroom->restore();
+
+        Session::flash('message-success','Consultorio restaurado correctamente.');
+        return Redirect::to('/admin/consulting-room');
     }
 }

@@ -5,17 +5,17 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Pacientes <small>Lista de Pacientes Eliminados</small>
+                Consultorios <small>Lista de Consultorios Eliminados</small>
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="{{ url('/admin') }}">Inicio</a>
                 </li>
                 <li>
-                    <i class="fa fa-user"></i> Pacientes
+                    <i class="fa fa-user"></i> Consultorios
                 </li>
                 <li class="active">
-                    <i class="fa fa-user-times"></i> Lista de Pacientes Eliminados
+                    <i class="fa fa-user-times"></i> Lista de Consultorios Eliminados
                 </li>
             </ol>
         </div>
@@ -27,16 +27,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Lista de Pacientes Eliminados</div>
+                <div class="panel-heading">Lista de Consultorios Eliminados</div>
                 <div class="panel-body">
-                    <table class="table table-hover table-striped" id="tablepatients">
+                    <table class="table table-hover table-striped" id="tableconsultingrooms">
                         <thead>
                             <tr>
-                                <th>Apellidos</th>
-                                <th>Nombre(s)</th>
-                                <th>Teléfono</th>
-                                <th>Celular</th>
-                                <th>Correo Electrónico</th>
+                                <th>Título</th>
+                                <th>Dirección</th>
                                 <th>Antigüedad</th>
                                 <th>Acciones</th>
                             </tr>
@@ -51,16 +48,13 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
-            $('#tablepatients').DataTable({
+            $('#tableconsultingrooms').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "/admin/api/patients-deleted",
+                "ajax": "/admin/api/consulting-rooms-deleted",
                 "columns":[
-                    {data: 'last_name'},
-                    {data: 'name'},
-                    {data: 'phone'},
-                    {data: 'mobile'},
-                    {data: 'email'},
+                    {data: 'title'},
+                    {data: 'address'},
                     {data: 'created_at', searchable: false},
                     {data: 'actions', searchable: false},
                 ],

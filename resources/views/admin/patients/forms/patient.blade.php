@@ -18,7 +18,7 @@
                     {!! Form::label('id_doctor', 'Doctor', ['class' => 'col-md-4 control-label']) !!}
 
                     <div class="col-md-8">
-                        {!! Form::select('id_doctor',['1' => 'Luis Eduardo','2' => 'Miguel Angel','3' => 'Guadalupe Callejas'],old('id_doctor','1'),['class'=>'form-control','id'=>'id_doctor','placeholder' => 'Doctor']) !!}
+                        {!! Form::select('id_doctor',$doctors,old('id_doctor'),['class'=>'form-control','id'=>'id_doctor','placeholder' => 'Doctor']) !!}
 
                         @if ($errors->has('id_doctor'))
                             <span class="help-block">
@@ -32,7 +32,7 @@
                     {!! Form::label('id_consulting_room', 'Consultorio', ['class' => 'col-md-4 control-label']) !!}
 
                     <div class="col-md-8">
-                        {!! Form::select('id_consulting_room',['1' => 'Fuentes','2' => 'Tlalnepantla','3' => 'Atizapán'],old('id_consulting_room'),['class'=>'form-control','id'=>'id_consulting_room','placeholder' => 'Consultorio']) !!}
+                        {!! Form::select('id_consulting_room',$consultingrooms,old('id_consulting_room'),['class'=>'form-control','id'=>'id_consulting_room','placeholder' => 'Consultorio']) !!}
 
                         @if ($errors->has('id_consulting_room'))
                             <span class="help-block">

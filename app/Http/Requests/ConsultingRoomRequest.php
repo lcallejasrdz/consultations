@@ -30,7 +30,7 @@ class ConsultingRoomRequest extends Request
                     'address' => 'required',
                     'lat' => 'required',
                     'lng' => 'required',
-                    'logo' => 'required',
+                    'logo' => 'required|image',
                 ];
             }
             case 'PUT': {
@@ -39,7 +39,7 @@ class ConsultingRoomRequest extends Request
                     'address' => 'required',
                     'lat' => 'required',
                     'lng' => 'required',
-                    'logo' => 'required',
+                    'logo' => 'image',
                 ];
             }
             default:
