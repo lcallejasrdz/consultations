@@ -22,11 +22,11 @@ class ConsultingRoomRequest extends Request
      * @return array
      */
     public function rules()
-    {
+    {   
         switch ($this->method()) {
             case 'POST': {
                 return [
-                    'title' => 'required',
+                    'title' => 'required|unique:consulting_rooms,title',
                     'address' => 'required',
                     'lat' => 'required',
                     'lng' => 'required',
@@ -35,7 +35,7 @@ class ConsultingRoomRequest extends Request
             }
             case 'PUT': {
                 return [
-                    'title' => 'required',
+                    'title' => 'required|unique:consulting_rooms,title,'.$this->segment(3),
                     'address' => 'required',
                     'lat' => 'required',
                     'lng' => 'required',
