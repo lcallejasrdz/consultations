@@ -26,7 +26,10 @@ Route::group(['middleware' => ['guest']], function () {
 	Route::resource('login','LogController');
 });
 
+// Frontpage.
 Route::get('logout','LogController@logout');
+
+Route::get('appointment','AppointmentController@create');
 
 // Middleware para no mostrar ventanas si el usuario no esta autenticado y si tienen prefijo admin.
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
@@ -74,4 +77,22 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 		Route::get('/consulting-room/{id}/restore','ConsultingRoomController@restore');
 		// Restfull
 		Route::resource('/consulting-room','ConsultingRoomController');
+	/*
+	Appointments
+	 */
+		// DataTables Index
+		Route::get('/api/appointments','AppointmentController@datatablesindex');
+		// Deleted
+		Route::get('/appointment/deleted','AppointmentController@deleted');
+		// DataTables Deleted
+		Route::get('/api/appointments-deleted','AppointmentController@datatablesdeleted');
+		// Restore Deleted
+		Route::get('/appointment/{id}/restore','AppointmentController@restore');
+		// Restfull
+		Route::resource('/appointment','AppointmentController');
+	/*
+	Appointments
+	 */
+		// Restfull
+		Route::resource('/pruebas','PruebasController');
 });

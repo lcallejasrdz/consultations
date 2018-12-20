@@ -7,6 +7,7 @@
             height: 300px;
         }
     </style>
+    {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css') !!}
 @endsection
 
 @section('head')
@@ -50,6 +51,7 @@
 @endsection
 
 @section('scripts')
+    {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js') !!}
     {!! Html::script('assets/js/add-consulting-room.js') !!}
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfkOiNa7u0lm3IZkPIACogMIb5E8FgcOY&libraries=places&callback=initAutocomplete" async defer></script>

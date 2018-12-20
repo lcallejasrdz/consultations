@@ -2,7 +2,7 @@
     <ul>
         <li><a href="#tab1" data-toggle="tab">Datos Personales</a></li>
         <li><a href="#tab2" data-toggle="tab">Datos Generales</a></li>
-        <li><a href="#tab3" data-toggle="tab">AF</a></li>
+        <li><a href="#tab3" data-toggle="tab">AHF</a></li>
         <li><a href="#tab4" data-toggle="tab">APP</a></li>
         <li><a href="#tab5" data-toggle="tab">AGO</a></li>
         <li><a href="#tab6" data-toggle="tab">Aparatos y Sistemas</a></li>

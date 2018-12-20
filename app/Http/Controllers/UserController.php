@@ -123,7 +123,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        Session::flash('message-success','Usuario eliminado correctamente.');
+        Session::flash('success', 'Usuario eliminado correctamente.');
 
         return response()->json([
             "message" => "deleted"
